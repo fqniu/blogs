@@ -1,11 +1,11 @@
 <template>
     <div>
-        我的
+        博客
     </div>
 </template>
 <script>
 export default {
-    name: 'mine',
+    name: 'blogs',
     data() {
         return {
         }

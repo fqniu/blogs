@@ -3,6 +3,7 @@ function resolve(dir) {
     return path.resolve(__dirname, dir)
 }
 module.exports = {
+    publicPath:'./',
     configureWebpack: {
         resolve: {
             extensions: ['.js', '.vue', '.json'],

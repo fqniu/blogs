@@ -1,14 +1,13 @@
 <template>
     <div>
-        <div></div>
+        内容
     </div>
 </template>
 <script>
 export default {
-    name: 'NavigationBar',
+    name: 'detailsCenter',
     data() {
         return {
-
         }
     },
     created(){

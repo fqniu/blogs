@@ -6,12 +6,12 @@ export default{
         }
     },
     created() {
-        console.log('全局混入')
+        // console.log('全局混入')
     },
     methods: {
         
     },
     computed: {
-        ...mapGetters(['tip','moduleTip'])
+        // ...mapGetters(['tip','moduleTip'])
     },
 }

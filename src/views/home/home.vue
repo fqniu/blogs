@@ -5,7 +5,6 @@
             {{tip}}
             {{moduleTip}} 
         </div>
-      
     </div>
 </template>
 <script>

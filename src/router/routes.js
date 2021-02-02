@@ -12,6 +12,14 @@ const routes = [
         }
     },
     {
+        path: '/mine',
+        name: 'mine',
+        component: load('mine'),
+        meta: {
+            title: '我的'
+        }
+    },
+    {
         path: '*',
         redirect: {
             path: '/'

@@ -1,41 +1,44 @@
-function load(component) {
-    return resolve => require([`../views/${component}/${component}`], resolve)
-}
+// function load(component) {
+//     return resolve => require([`../views/${component}/${component}`], resolve)
+// }
 
-const routes = [{
+const routes = [
+    {
         path: '/',
-        component: load('home'),
+        component: resolve => require(['@/views/myhome.vue'], resolve),
     },
     {
         path: '/home',
         name: 'home',
-        component: load('home'),
+        component: resolve => require(['@/views/myhome.vue'], resolve),
         meta: {
             title: '首页'
         },
-        children: [{
-            path: '/home/homePage',
-            name: 'homePage',
-            component: resolve => require(['@/views/home/homePage.vue'], resolve),
-        }, {
-            path: '/home/blogs',
-            name: 'blogs',
-            component: resolve => require(['@/views/home/blogs.vue'], resolve),
-        }, {
-            path: '/home/detailsCenter',
-            name: 'detailsCenter',
-            component: resolve => require(['@/views/home/detailsCenter.vue'], resolve),
-        }, {
-            path: '/home/mine',
-            name: 'mine',
-            component: resolve => require(['@/views/home/mine.vue'], resolve),
-        }]
+        // children: [{
+        //     path: '/home/homePage',
+        //     name: 'homePage',
+        //     component: resolve => require(['@/views/home/homePage.vue'], resolve),
+        // }, {
+        //     path: '/home/blogs',
+        //     name: 'blogs',
+        //     component: resolve => require(['@/views/home/blogs.vue'], resolve),
+        // }, {
+        //     path: '/home/detailsCenter',
+        //     name: 'detailsCenter',
+        //     component: resolve => require(['@/views/home/detailsCenter.vue'], resolve),
+        // }, {
+        //     path: '/home/mine',
+        //     name: 'mine',
+        //     component: resolve => require(['@/views/home/mine.vue'], resolve),
+        // }]
     },
     {
         path: '*',
-        redirect: {
-            path: '/'
-        }
+        name:'NotFound',
+        component:()=>import ('../views/NotFound.vue'),
+        // redirect: {
+        //     path: '/'
+        // }
     }
 ];
 export default routes;

@@ -1,11 +1,11 @@
 import axios from 'axios';
-
-// import {Toast} from 'vant';
 import qs from 'qs';
-// import {getToken,getAgentId,removeToken} from '@/utils/util'
-import config from '@/config'
 import Vue from 'vue'
 let $vue = new Vue
+
+// import {Toast} from 'vant';
+// import {getToken,getAgentId,removeToken} from '@/utils/util'
+import config from '@/config'
 
 const URL = process.env.NODE_ENV === 'development' ? config.baseUrl.dev : config.baseUrl.pro
 /**

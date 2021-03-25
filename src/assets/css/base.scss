@@ -9,7 +9,6 @@
     text-rendering: optimizeLegibility;
     // .scrollbar;
 }
-
 body,
 blockquote,
 figure {
@@ -33,18 +32,15 @@ h5,
 h6,
 p,
 dl,
+dd,
 hr,
-ul {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-dd {
-    margin-left: 0;
-}
-
-ul {
-    padding-left: 0;
+ul,
+ol,
+li,
+th,
+td {
+    padding: 0;
+    margin: 0;
 }
 
 li {
@@ -59,11 +55,6 @@ i {
 
 table {
     border-collapse: collapse;
-}
-
-th,
-td {
-    padding: 0;
 }
 
 fieldset {
@@ -88,7 +79,7 @@ body {
 body {
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
     ;
-    font-size: 13px
+    font-size: 12px
 }
 
 /*css reset end*/

@@ -25,7 +25,6 @@ instance.interceptors.request.use((config) => {
     }
 )
 
-
 //响应拦截器即异常处理
 instance.interceptors.response.use(
     (response) => {
@@ -49,12 +48,12 @@ instance.interceptors.response.use(
                 case 403 || 400:
                     message = error.response.data.path + ',' + error.response.data.message
                     break
-                case 500 || 502:
+                case 500:
                     message = '网络繁忙，请稍等后再试'
                     break
-                // case 502:
-                //     message = '连接服务器失败'
-                //     break
+                case 502:
+                    message = '连接服务器失败'
+                    break
                 default:
                     message = error.response.data.message ? error.response.data.message : '网络繁忙，请稍等后再试'
                     break

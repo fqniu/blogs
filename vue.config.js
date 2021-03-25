@@ -3,7 +3,8 @@ function resolve(dir) {
     return path.resolve(__dirname, dir)
 }
 module.exports = {
-    publicPath:'./',
+    publicPath: process.env.NODE_ENV === "production" ? "./" : "/",
+    assetsDir: "assets",
     configureWebpack: {
         resolve: {
             extensions: ['.js', '.vue', '.json'],
@@ -26,11 +27,11 @@ module.exports = {
         hot:true,
         // open: 'Chrome',
         // proxy: {
-        //     '/api': {
-        //         target: 'http://localhost:8081',
+        //     '/apiV2': {
+        //         target: 'https://silkroad.csdn.net/api/v2',
         //         changeOrigin: true,
         //         pathRewrite: {
-        //             '^/api': '/mock'
+        //             '^/api/v2': '/'
         //         }
         //     }
         // }
@@ -42,5 +43,17 @@ module.exports = {
     //         }
     //     }
     // }
+    css: {
+      loaderOptions: {
+        css: {},
+        postcss: {
+          plugins: [
+            require('postcss-px2rem')({
+              remUnit: 192
+            })
+          ]
+        }
+      }
+    },
     productionSourceMap:false,
 };

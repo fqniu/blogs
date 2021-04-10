@@ -15,10 +15,13 @@
 export default {
   name: "test",
   props:{
-    item:Array,
-    default:()=>{
-      return []
+    item:{
+      type:Object,
+      default:()=>{
+        return {}
+      }
     }
+   
   },
   data() {
     return {

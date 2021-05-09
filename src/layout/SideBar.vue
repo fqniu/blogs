@@ -5,9 +5,6 @@
         <router-link to="/">首页</router-link>
       </li>
     </ul>
-    <!-- <template v-for="(item, index) in $store.state.userRouters">
-      <MenuItem :key="index" :item="item" />
-    </template> -->
     <MenuItem />
   </div>
 </template>

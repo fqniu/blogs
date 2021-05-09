@@ -6,9 +6,8 @@
           <item :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" :title="onlyOneChild.meta.title" />
         </el-menu-item>
       </app-link>
-    </template> -->
-
-    <!-- <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
+    </template>
+    <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
       <template slot="title">
         <item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="item.meta.title" />
       </template>
@@ -22,51 +21,38 @@
       />
     </el-submenu> -->
 
-    <!-- <el-submenu index="1" class="pl28">
+    <div class="menu-wrapper">
+    <el-submenu v-if="item.children" ref="subMenu" :index="item.path">
       <template slot="title">
-        <div class="flex-center">
-          <img :src= "submenuIndex == 1 ? iconTaskSelectedUrl : iconTaskUnselectedUrl" alt="" class="submenu-left-icon">
-          <span class="submenu-title">任务信息</span>
-          <img :src= "submenuIndex == 1 ? iconCloseUrl : iconOpenUrl" alt="" class="">
+        <div class="flex-center pl28">
+          <!-- <img src="@/assets/img/icon-任务信息-选中状态.png" alt="" class="submenu-left-icon" v-if="active==item.path">
+          <img src="@/assets/img/icon-任务系统-未选中.png" alt="" class="submenu-left-icon" v-else> -->
+          <span class="submenu-title">{{item.title}}</span>
+          <!-- <img src="@/assets/img/icon-展开.png" alt="" class="" v-if="active==item.path">
+          <img src="@/assets/img/icon-收起.png" alt="" class="" v-else> -->
         </div>
       </template>
-      <el-menu-item index="/taskInfo/list" @click="setStyle('/taskInfo/list')" :class="['/taskInfo/list'== $route.path ? 'el-menu-item-active':'']">我的任务</el-menu-item>
-      <el-menu-item index="/taskInfo/pendingApproval" @click="setStyle('/taskInfo/pendingApproval')" :class="['/taskInfo/pendingApproval' == $route.path ? 'el-menu-item-active':'']">待我审批</el-menu-item>
-      <el-menu-item index="/taskInfo/executiveLogging" @click="setStyle('/taskInfo/executiveLogging')" :class="['/taskInfo/executiveLogging' == $route.path ? 'el-menu-item-active':'']">执行记录</el-menu-item>
-    </el-submenu> -->
-
-    <!-- <el-submenu index="2" class="pl28">
-      <template slot="title">
-        <div class="flex-center">
-          <img :src= "submenuIndex == 2 ? iconSystemSelectedUrl : iconSystemUnselectedUrl" alt="" class="submenu-left-icon">
-          <span class="submenu-title">系统管理</span>
-          <img :src= "submenuIndex == 2 ? iconCloseUrl : iconOpenUrl" class="">
-        </div>
-      </template>
-      <el-menu-item index="/systemManage/list" @click="setStyle('/systemManage/list')" :class="['/systemManage/list'== $route.path ? 'el-menu-item-active':'']">计划任务安排</el-menu-item>
-      <el-menu-item index="/systemManage/performRecordManage" @click="setStyle('/systemManage/performRecordManage')" :class="['/systemManage/performRecordManage'== $route.path ? 'el-menu-item-active':'']">执行记录管理</el-menu-item>
-    </el-submenu> -->
-
-     <el-submenu ref="subMenu" index="2">
-      <template slot="title">
-        <div>123</div>
-        <!-- <item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="item.meta.title" /> -->
-      </template>
-      <sidebar-item
-        v-for="(child,index) in item.children"
-        :key="index"
+      <SidebarItem
+        v-for="child in item.children"
+        :key="child.path"
         :item="child"
-        class="nest-menu"
+        :base-path="child.path"
       />
     </el-submenu>
+
+    <el-menu-item :index="item.path" v-else>
+      <div @click="setStyle(item.path)" class="item.path">{{item.title}}</div>
+    </el-menu-item>
+  </div>
+
   </div>
 </template>
 <script>
-// import SidebarItem from './SidebarItem'
+import SidebarItem from './SidebarItem'
 export default {
   name: 'SidebarItem',
   components:{
-    // SidebarItem
+    SidebarItem
   },
   props:{
     item:{
@@ -85,6 +71,9 @@ export default {
   computed:{
   },
   methods:{
+    setStyle(value){
+      console.log(value);
+    }
   },
 }
 </script>

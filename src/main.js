@@ -8,7 +8,12 @@ import store from './store'
 // import Antd from 'ant-design-vue';
 // Vue.use(Antd);
 // import {Button} from 'ant-design-vue';
-// Vue.component(Button.name, Button)
+// Vue.component(Button.name, Button);
+
+import '@/utils/directive' // 全局自定义指令
+
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 // 引入elementUI
 import ElementUI from 'element-ui';
@@ -31,18 +36,25 @@ Vue.use(Sticky)
 import mixins from './minxins'
 Vue.mixin(mixins)
 
+import loading from './components/Loading.vue';
+Vue.component('loading', loading);
+
 import {generateRouter} from '@/utils';
 router.beforeEach(async (to, form, next)=>{
   if(!store.state.hasAuth){
+    NProgress.start();
     await store.dispatch('setUserRouters')
+    NProgress.done(true);
     const newRouters = generateRouter(store.state.userRouters)
+    store.commit('addBtnPermission', newRouters)
     router.addRoutes(newRouters)
-    console.log(newRouters);
+    console.log('11111',newRouters);
     next({path:to.path})
   }else{
     next()
   }
 })
+
 
 // // 拖拽
 // Vue.directive('drag', { // 全局弹窗拖拽指令
@@ -171,4 +183,4 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-console.log(new Vue)
+// console.log(new Vue)

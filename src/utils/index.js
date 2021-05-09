@@ -26,9 +26,15 @@ function formateRouterTree(data) {
 // 转为vue 路由格式
 function generateRouter(userRouters){
   let newRouters = userRouters.map(r => {
+    let arr = []
+    arr.push(r.name)
     let routes = {
       path:r.path,
       name:r.name,
+      title:r.title,
+      meta:{
+        btnPermission: arr
+      },
       component:() => import(`@/views/${r.name}.vue`)
     }
     if(r.children){

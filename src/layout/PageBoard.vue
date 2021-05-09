@@ -1,15 +1,18 @@
 <template>
   <div class="page-board">
-    <test v-for="(item,index) in testData" :key="index" :item="item"></test>
+    <breadcrumb class="breadcrumb-container" />
+    <!-- <test v-for="(item,index) in testData" :key="index" :item="item"></test> -->
     <router-view></router-view>
   </div>
 </template>
 <script>
-import test from './test'
+// import test from './test';
+import Breadcrumb from '@/components/Breadcrumb'
 export default {
   name: "PageBoard",
   components:{
-    test
+    // test,
+    Breadcrumb,
   },
   data() {
     return {
@@ -48,6 +51,6 @@ export default {
   width: 100%;
   height: 100%;
   padding: 90px 30px 30px 230px;
-  background: cadetblue;
+  // background: cadetblue;
 }
 </style>
